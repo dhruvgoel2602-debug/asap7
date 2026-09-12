@@ -92,8 +92,10 @@ read_parasitic_tech -tlup snps/starrc/tlu_plus \
                     -layermap snps/starrc/asap07.layermap -name asap7_default
 ```
 
-Built and verified on Library Compiler `Y-2026.03` and ICC2
-`X-2025.06-SP1` (Rocky Linux 8.10) — see `docs/TOOL_VERSIONS.md`.
+The `.db` set was built with Library Compiler `Y-2026.03` and the `.ndm`
+libraries with ICC2 `X-2025.06-SP1`, on Rocky Linux 8.10 — though that ICC2
+is no longer installed there, which is part of why the binaries are not
+committed. See `docs/TOOL_VERSIONS.md`.
 
 Read `docs/ICC2_FLOW_NOTES.md` before running a real block — it documents
 several non-obvious failures, including the `set_ref_libs` corner-scoping

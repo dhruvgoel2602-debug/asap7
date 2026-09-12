@@ -4,10 +4,12 @@ Working notes from bringing ASAP7 up on the Synopsys flow. These record
 things that were *verified against the tools*, plus the failures that cost
 the most time. Read the gotchas before running a real block.
 
-Environment these were taken on: Rocky Linux 8.10, ICC2/Fusion Compiler
-X-2025.06-SP1 (`/home/synopsys/syn/Y-2026.03/`), Library Compiler in a
-**separate** install tree (`/home/synopsys/lc/Y-2026.03/bin/lc_shell`, *not*
-under `syn/`).
+Environment these were taken on: Rocky Linux 8.10, ICC2 `X-2025.06-SP1`
+(that ICC2 has since been replaced by `Y-2026.03` on the original machine).
+Each tool has its own install tree — ICC2 at `/home/synopsys/icc2/.../bin/`
+and Library Compiler at `/home/synopsys/lc/.../bin/lc_shell`, **neither**
+under `syn/`, which holds only `dc_shell`/`design_vision`. See
+`TOOL_VERSIONS.md`.
 
 ---
 
