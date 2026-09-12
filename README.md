@@ -20,7 +20,9 @@ file in `tech/` is the working one; the three fixes are described below.
 | `snps/icc/` | GDS in/out layer maps, layer table | `asap7_snps` |
 | `snps/starrc/` | `tlu_plus` parasitic tech + `asap07.layermap` + ITF sources | `asap7_snps` |
 | `docs/ICC2_FLOW_NOTES.md` | Build recipes, verified commands, known gotchas | written here |
+| `docs/TOOL_VERSIONS.md` | Exact tool versions this was built/verified against | written here |
 | `scripts/` | Regeneration scripts for `.db` and `.ndm` | written here |
+| `scripts/as-built/` | The workspace configs ICC2 emitted during the original build | captured |
 
 ### What is deliberately *not* here
 
@@ -39,7 +41,9 @@ file in `tech/` is the working one; the three fixes are described below.
 
   Both `.db` and `.ndm` are derived, tool-version-specific binaries — they
   are cheap to rebuild and would bloat this repo, so only the *sources* and
-  the *recipes* are archived.
+  the *recipes* are archived. `.ndm` in particular does not survive an ICC2
+  major-version change, so rebuilding on the target install is the correct
+  move anyway. See `docs/TOOL_VERSIONS.md`.
 
 ## The three tech-file fixes
 
@@ -87,6 +91,9 @@ set link_library "* db_out/asap7sc7p5t_SEQ_RVT_TT_nldm_220123.db ..."
 read_parasitic_tech -tlup snps/starrc/tlu_plus \
                     -layermap snps/starrc/asap07.layermap -name asap7_default
 ```
+
+Built and verified on Library Compiler `Y-2026.03` and ICC2
+`X-2025.06-SP1` (Rocky Linux 8.10) — see `docs/TOOL_VERSIONS.md`.
 
 Read `docs/ICC2_FLOW_NOTES.md` before running a real block — it documents
 several non-obvious failures, including the `set_ref_libs` corner-scoping
