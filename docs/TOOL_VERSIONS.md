@@ -5,29 +5,38 @@ text and version-independent. The build products described in
 `scripts/README.md` are **not** — this file records what produced them and what
 that means when you rebuild.
 
-## Currently installed (verified by `-version`)
+## Installed (verified by `-version`)
+
+**Two different ICC2 versions are installed side by side.** They are separate
+builds in separate trees, and an `.ndm` written by one will generally not open
+in the other — so which `icc2_shell` you invoke matters.
 
 | Tool | Version | Binary |
 |---|---|---|
 | **Library Compiler** | `Y-2026.03` (Feb 25, 2026) | `/home/synopsys/lc/Y-2026.03/bin/lc_shell` |
+| **IC Compiler II** | `X-2025.06-SP1-707-T-20251209` (Dec 9, 2025) | `/home/synopsys/syn/Y-2026.03/fusioncompiler/bin/icc2_shell` |
 | **IC Compiler II** | `Y-2026.03` (May 19, 2026) | `/home/synopsys/icc2/Y-2026.03/bin/icc2_shell` |
 | **IC Compiler II LM** | `Y-2026.03` (May 19, 2026) | `/home/synopsys/icc2/Y-2026.03/bin/icc2_lm_shell` |
 | **PrimeTime** | `Y-2026.03` (Feb 25, 2026) | `/home/synopsys/prime/Y-2026.03/bin/pt_shell` |
 
 Platform: Rocky Linux 8.10, x86-64 (kernel 4.18.0-553).
 
+Bare `icc2_shell` is **not on `PATH`** on this box — only `/home/synopsys/syn/
+Y-2026.03/bin` is, and that directory contains `dc_shell` but no `icc2_shell`.
+Always invoke ICC2 by full path, and pick deliberately.
+
 ## What produced the original build products
 
 - The **`.db` set** was compiled by Library Compiler `Y-2026.03` — the version
   still installed above. 88/88 files compiled cleanly.
 - The **`.ndm` reference libraries** were built by IC Compiler II
-  **`X-2025.06-SP1-707-T-20251209`** (Dec 9, 2025; base build 2025-07-07).
-  **That ICC2 is no longer installed** — the box has since moved to
-  `Y-2026.03`.
+  **`X-2025.06-SP1-707-T-20251209`** (Dec 9, 2025; base build 2025-07-07) —
+  the `fusioncompiler` entry in the table above, which is still installed.
 
-This is a concrete example of why the binaries are not committed here: the
-tool that wrote them is already gone, so shipping them would have shipped
-something unopenable.
+This is why `.ndm` is not committed here. Two ICC2 versions coexist on the
+build machine and nothing in a `.ndm` filename tells you which one wrote it;
+rebuilding on whichever ICC2 you actually intend to use is both cheaper and
+safer than inheriting that ambiguity.
 
 ## What that means for restoring
 
@@ -46,18 +55,23 @@ disposable.
 
 ## Install layout gotcha
 
-On this installation each tool has its **own** install tree. Neither Library
-Compiler nor ICC2 lives under `syn/`, which is easy to get wrong because `syn/`
-is where `dc_shell` and `design_vision` are:
+On this installation each tool has its own install tree, and `syn/` is not the
+place to look for most of them — `syn/.../bin` holds `dc_shell` and
+`design_vision` only. ICC2, confusingly, is reachable **two** ways:
 
 ```
-/home/synopsys/lc/Y-2026.03/bin/lc_shell        <- correct
-/home/synopsys/syn/Y-2026.03/bin/lc_shell       <- does not exist
+/home/synopsys/lc/Y-2026.03/bin/lc_shell                     <- correct
+/home/synopsys/syn/Y-2026.03/bin/lc_shell                    <- does not exist
 
-/home/synopsys/icc2/Y-2026.03/bin/icc2_shell    <- correct
-/home/synopsys/icc2/Y-2026.03/bin/icc2_lm_shell <- correct
-/home/synopsys/syn/Y-2026.03/bin/icc2_shell     <- does not exist
+/home/synopsys/syn/Y-2026.03/fusioncompiler/bin/icc2_shell   <- exists: X-2025.06-SP1
+/home/synopsys/icc2/Y-2026.03/bin/icc2_shell                 <- exists: Y-2026.03
+/home/synopsys/icc2/Y-2026.03/bin/icc2_lm_shell              <- exists: Y-2026.03
+/home/synopsys/syn/Y-2026.03/bin/icc2_shell                  <- does not exist
 ```
+
+The two `icc2_shell` paths are **different versions**, not aliases. Note the
+one under `syn/` is nested in `fusioncompiler/bin`, not `bin` — missing that
+segment is what makes the `syn/` ICC2 look absent.
 
 Note also that `icc2_lm_shell -version` self-reports as `lm_shell`.
 

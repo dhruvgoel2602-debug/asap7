@@ -93,9 +93,9 @@ read_parasitic_tech -tlup snps/starrc/tlu_plus \
 ```
 
 The `.db` set was built with Library Compiler `Y-2026.03` and the `.ndm`
-libraries with ICC2 `X-2025.06-SP1`, on Rocky Linux 8.10 — though that ICC2
-is no longer installed there, which is part of why the binaries are not
-committed. See `docs/TOOL_VERSIONS.md`.
+libraries with ICC2 `X-2025.06-SP1`, on Rocky Linux 8.10. That machine has
+two ICC2 versions installed side by side, which is part of why the binaries
+are not committed — see `docs/TOOL_VERSIONS.md`.
 
 Read `docs/ICC2_FLOW_NOTES.md` before running a real block — it documents
 several non-obvious failures, including the `set_ref_libs` corner-scoping
