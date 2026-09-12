@@ -143,26 +143,45 @@ write_verilog -hierarchy <out>.v ; write_sdc <out>.sdc
 
 ---
 
-## Open issue at time of archiving
+## OPT-045: "Cannot find usable buffers or inverters"
 
-`clock_opt -to route_clock` fails on a block bound to the TT corner:
+At the time this collateral was last used on ASAP7, `clock_opt -to route_clock`
+failed on a block bound to the TT corner:
 
 ```
 Warning: Cannot find default buffer/inverter for VA DEFAULT_VA ... (OPT-043)
 Error:   Cannot find usable buffers or inverters. (OPT-045)
 ```
 
-Ruled out: buffers/inverters *are* present in the linked library (`BUFx*`,
-`INVx*`, `CKINVDCx*`); none are `dont_use`; `valid_purposes` includes `cts`;
-voltage area `DEFAULT_VA` exists with correct `power_net`/`ground_net`; zero
-black-box cells.
+Ruled out at the time: buffers/inverters *are* present in the linked library
+(`BUFx*`, `INVx*`, `CKINVDCx*`); none are `dont_use`; `valid_purposes`
+includes `cts`; voltage area `DEFAULT_VA` exists with correct
+`power_net`/`ground_net`; zero black-box cells. All of which is consistent
+with the library being fine and the *corner setup* being the problem.
 
-Untested hypotheses: (a) SDC clock definitions were lost during the
-black-box/relink episode, so CTS has no clock to build against; (b) the
-voltage area needs CTS buffers designated explicitly. Next probes:
-`all_clocks`, `report_clock`, `help *default_buffer*`.
+**The fix (confirmed later on a different PDK, same tool version):** use
+**one and only one ICC2 corner** for the whole implementation run —
+floorplan → placement → `clock_opt` → routing. Do not create a second corner
+at a different voltage before `clock_opt`. If a second corner's parasitics
+are needed for PrimeTime, create it *after* clock_opt and routing, right
+before `write_parasitics -corner <name>`.
 
-Also not done: routing, PrimeTime signoff, `write_gds`.
+This is the same root cause as the `set_ref_libs` trap in section 4: the
+library binding is global, not per-corner, so a second corner leaves CTS
+unable to resolve usable buffer cells even though they are plainly in the
+library.
+
+A tempting wrong turn worth recording: the first diagnosis chased a library
+property (a missing/!unusable buffer attribute). That is the wrong level —
+the library was never the problem. When several same-level fixes all fail,
+suspect the inherited corner/binding setup upstream instead.
+
+Note this was verified end-to-end on **SCL180**, not re-run on ASAP7 — the
+tool version and the failure signature are identical, and the mechanism is
+library binding rather than anything PDK-specific, so it should carry over.
+Treat it as a strong lead, not a re-verified ASAP7 result.
+
+Also never done on ASAP7: routing, PrimeTime signoff, `write_gds`.
 
 ---
 
