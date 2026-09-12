@@ -1,0 +1,891 @@
+--- asap7_snps/icc/asap07_icc.tf	2026-08-11 13:18:26.892552608 +0530
++++ asap07_icc_fixed.tf	2026-08-19 19:15:25.882870316 +0530
+@@ -7,7 +7,7 @@
+ 		timePrecision			= 1000
+ 		unitLengthName			= "micron"
+ 		lengthPrecision			= 4000
+-		gridResolution			= 16
++		gridResolution			= 4
+ 		unitVoltageName			= "V"
+ 		voltagePrecision		= 1000000
+ 		unitCurrentName			= "mA"
+@@ -45,6 +45,10 @@
+                 width                           = 0.216
+                 height                          = 4.320
+ }
++Tile            "asap7sc7p5t" {
++                width                           = 0.054
++                height                          = 0.270
++}
+ Color 2 { 
+     name = "white"
+     rgbDefined = 1
+@@ -456,6 +460,90 @@
+ 		minSpacing			= 0
+ }
+ 
++Layer		"RVTN" {
++		layerNumber			= 40
++		maskName			= "RVTN"
++		visible				= 1
++		selectable			= 1
++		blink				= 0
++		color				= "cyan"
++		lineStyle			= "solid"
++		pattern				= "blank"
++		pitch				= 0
++		defaultWidth			= 0
++		minWidth			= 0
++		minSpacing			= 0
++}
++Layer		"RVTP" {
++		layerNumber			= 41
++		maskName			= "RVTP"
++		visible				= 1
++		selectable			= 1
++		blink				= 0
++		color				= "magenta"
++		lineStyle			= "solid"
++		pattern				= "blank"
++		pitch				= 0
++		defaultWidth			= 0
++		minWidth			= 0
++		minSpacing			= 0
++}
++Layer		"LVTN" {
++		layerNumber			= 42
++		maskName			= "LVTN"
++		visible				= 1
++		selectable			= 1
++		blink				= 0
++		color				= "violet"
++		lineStyle			= "solid"
++		pattern				= "blank"
++		pitch				= 0
++		defaultWidth			= 0
++		minWidth			= 0
++		minSpacing			= 0
++}
++Layer		"LVTP" {
++		layerNumber			= 43
++		maskName			= "LVTP"
++		visible				= 1
++		selectable			= 1
++		blink				= 0
++		color				= "gold"
++		lineStyle			= "solid"
++		pattern				= "blank"
++		pitch				= 0
++		defaultWidth			= 0
++		minWidth			= 0
++		minSpacing			= 0
++}
++Layer		"SLVTN" {
++		layerNumber			= 44
++		maskName			= "SLVTN"
++		visible				= 1
++		selectable			= 1
++		blink				= 0
++		color				= "forest"
++		lineStyle			= "solid"
++		pattern				= "blank"
++		pitch				= 0
++		defaultWidth			= 0
++		minWidth			= 0
++		minSpacing			= 0
++}
++Layer		"SLVTP" {
++		layerNumber			= 45
++		maskName			= "SLVTP"
++		visible				= 1
++		selectable			= 1
++		blink				= 0
++		color				= "brown"
++		lineStyle			= "solid"
++		pattern				= "blank"
++		pitch				= 0
++		defaultWidth			= 0
++		minWidth			= 0
++		minSpacing			= 0
++}
+ Layer		"SRAMDRC" {
+ 		layerNumber			= 13
+ 		maskName			= "SRAMDRC"
+@@ -557,9 +645,9 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "solid"
+ 		pitch				= 0
+-		defaultWidth			= 0.072
+-		minWidth			= 0.072
+-		minSpacing			= 0.072
++		defaultWidth			= 0.018
++		minWidth			= 0.018
++		minSpacing			= 0.018
+ }
+ 
+ Layer		"M1" {
+@@ -573,15 +661,15 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "dot"
+ /*		pitch				= 0.144 */
+-		pitch				= 0.072
+-		defaultWidth			= 0.072
+-		minWidth			= 0.072
+-		minSpacing			= 0.072
++		pitch				= 0.036
++		defaultWidth			= 0.018
++		minWidth			= 0.018
++		minSpacing			= 0.018
+ 		fatTblDimension			= 2
+-		fatTblThreshold			= (0,0.144)
+-		fatTblSpacing			= (0.072,0.072,
+-						   0.072,0.072)
+-		minArea				= 0.010656
++		fatTblThreshold			= (0,0.036)
++		fatTblSpacing			= (0.018,0.018,
++						   0.018,0.018)
++		minArea				= 0.000666
+ /*		hasRectangleOnly = 1 */
+ 		hasRectangleOnly = 0 
+ 		nonPreferredRouteMode = 1
+@@ -598,9 +686,9 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "rectangleX"
+ 		pitch				= 0
+-		defaultWidth			= 0.072
+-		minWidth			= 0.072
+-		minSpacing			= 0.072
++		defaultWidth			= 0.018
++		minWidth			= 0.018
++		minSpacing			= 0.018
+ }
+ 
+ Layer		"M2" {
+@@ -613,12 +701,12 @@
+ 		color				= "yellow"
+ 		lineStyle			= "solid"
+ 		pattern				= "dot"
+-		pitch				= 0.144
++		pitch				= 0.036
+ /*		pitch				= 0.072*/
+-		defaultWidth			= 0.072
+-		minWidth			= 0.072
+-		minSpacing			= 0.072
+-		minArea				= 0.010656
++		defaultWidth			= 0.018
++		minWidth			= 0.018
++		minSpacing			= 0.018
++		minArea				= 0.000666
+ /*		hasRectangleOnly = 1 */
+ 		hasRectangleOnly = 0 
+ 		nonPreferredRouteMode = 1 
+@@ -635,9 +723,9 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "blank"
+ 		pitch				= 0
+-		defaultWidth			= 0.072
+-		minWidth			= 0.072
+-		minSpacing			= 0.072
++		defaultWidth			= 0.018
++		minWidth			= 0.018
++		minSpacing			= 0.018
+ }
+ 
+ Layer		"M3" {
+@@ -650,11 +738,11 @@
+ 		color				= "red"
+ 		lineStyle			= "solid"
+ 		pattern				= "wave"
+-		pitch				= 0.144
+-		defaultWidth			= 0.072
+-		minWidth			= 0.072
+-		minSpacing			= 0.072
+-		minArea				= 0.010656
++		pitch				= 0.036
++		defaultWidth			= 0.018
++		minWidth			= 0.018
++		minSpacing			= 0.018
++		minArea				= 0.000666
+ /*		hasRectangleOnly = 1  */
+ 		hasRectangleOnly = 0 
+ 		nonPreferredRouteMode = 1 
+@@ -671,8 +759,8 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "blank"
+ 		pitch				= 0
+-		defaultWidth			= 0.072
+-		minWidth			= 0.072
++		defaultWidth			= 0.018
++		minWidth			= 0.018
+ 		minSpacing			= 0
+ }
+ 
+@@ -686,17 +774,17 @@
+ 		color				= "green"
+ 		lineStyle			= "solid"
+ 		pattern				= "slash"
+-		pitch				= 0.192 
+-		defaultWidth			= 0.096
+-		minWidth			= 0.096
+-		minSpacing			= 0.096
++		pitch				= 0.048 
++		defaultWidth			= 0.024
++		minWidth			= 0.024
++		minSpacing			= 0.024
+ 		fatTblDimension			= 2
+-		fatTblThreshold			= (0,0.10025)
++		fatTblThreshold			= (0,0.0250625)
+ 		fatTblParallelLengthDimension	= 1
+ 		fatTblParallelLength		= (0)
+-		fatTblSpacing			= (0.096,
+-						   0.288)
+-		minArea				= 0.032
++		fatTblSpacing			= (0.024,
++						   0.072)
++		minArea				= 0.002
+ 		hasRectangleOnly = 1 
+ 		nonPreferredRouteMode = 1
+ }
+@@ -712,8 +800,8 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "rectangleX"
+ 		pitch				= 0
+-		defaultWidth			= 0.096
+-		minWidth			= 0.096
++		defaultWidth			= 0.024
++		minWidth			= 0.024
+ 		minSpacing			= 0
+ }
+ 
+@@ -727,17 +815,17 @@
+ 		color				= "magenta"
+ 		lineStyle			= "solid"
+ 		pattern				= "backSlash"
+-		pitch				= 0.192 
+-		defaultWidth			= 0.096
+-		minWidth			= 0.096
+-		minSpacing			= 0.096
++		pitch				= 0.048 
++		defaultWidth			= 0.024
++		minWidth			= 0.024
++		minSpacing			= 0.024
+ 		fatTblDimension			= 2
+-		fatTblThreshold			= (0,0.10025)
++		fatTblThreshold			= (0,0.0250625)
+ 		fatTblParallelLengthDimension	= 1
+ 		fatTblParallelLength		= (0)
+-		fatTblSpacing			= (0.096,
+-						   0.288)
+-		minArea				= 0.032
++		fatTblSpacing			= (0.024,
++						   0.072)
++		minArea				= 0.002
+ 		hasRectangleOnly = 1 
+ 		nonPreferredRouteMode = 1
+ }
+@@ -753,8 +841,8 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "rectangleX"
+ 		pitch				= 0
+-		defaultWidth			= 0.096
+-		minWidth			= 0.096
++		defaultWidth			= 0.024
++		minWidth			= 0.024
+ 		minSpacing			= 0
+ }
+ 
+@@ -768,17 +856,17 @@
+ 		color				= "47"
+ 		lineStyle			= "solid"
+ 		pattern				= "dot"
+-		pitch				= 0.256
+-		defaultWidth			= 0.128
+-		minWidth			= 0.128
+-		minSpacing			= 0.128
++		pitch				= 0.064
++		defaultWidth			= 0.032
++		minWidth			= 0.032
++		minSpacing			= 0.032
+ 		fatTblDimension			= 2
+-		fatTblThreshold			= (0,0.10025)
++		fatTblThreshold			= (0,0.0250625)
+ 		fatTblParallelLengthDimension	= 1
+ 		fatTblParallelLength		= (0)
+-		fatTblSpacing			= (0.096,
+-						   0.288)
+-		minArea				= 0.035
++		fatTblSpacing			= (0.024,
++						   0.072)
++		minArea				= 0.0021875
+ 		hasRectangleOnly = 1 
+ 		nonPreferredRouteMode = 1
+ }
+@@ -794,8 +882,8 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "blank"
+ 		pitch				= 0
+-		defaultWidth			= 0.128
+-		minWidth			= 0.128
++		defaultWidth			= 0.032
++		minWidth			= 0.032
+ 		minSpacing			= 0
+ }
+ 
+@@ -809,17 +897,17 @@
+ 		color				= "purple"
+ 		lineStyle			= "solid"
+ 		pattern				= "backSlash"
+-		pitch				= 0.256
+-		defaultWidth			= 0.128
+-		minWidth			= 0.128
+-		minSpacing			= 0.128
++		pitch				= 0.064
++		defaultWidth			= 0.032
++		minWidth			= 0.032
++		minSpacing			= 0.032
+ 		fatTblDimension			= 2
+-		fatTblThreshold			= (0,0.10025)
++		fatTblThreshold			= (0,0.0250625)
+ 		fatTblParallelLengthDimension	= 1
+ 		fatTblParallelLength		= (0)
+-		fatTblSpacing			= (0.096,
+-						   0.288)
+-		minArea				= 0.035
++		fatTblSpacing			= (0.024,
++						   0.072)
++		minArea				= 0.0021875
+ 		hasRectangleOnly = 1 
+ 		nonPreferredRouteMode = 1
+ }
+@@ -835,9 +923,9 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "blank"
+ 		pitch				= 0
+-		defaultWidth			= 0.128
+-		minWidth			= 0.128
+-		minSpacing			= 0.184
++		defaultWidth			= 0.032
++		minWidth			= 0.032
++		minSpacing			= 0.046
+ 		minCutsTblSize			= 1
+ 		minCutsTbl			= (2,*,-1.000,7.221,-1.000000,-1.000)
+ }
+@@ -852,24 +940,24 @@
+ 		color				= "orange"
+ 		lineStyle			= "solid"
+ 		pattern				= "backSlash"
+-		pitch				= 0.32
+-		defaultWidth			= 0.16
+-		minWidth			= 0.16
+-		minSpacing			= 0.16
+-		maxWidth			= 8
++		pitch				= 0.08
++		defaultWidth			= 0.04
++		minWidth			= 0.04
++		minSpacing			= 0.04
++		maxWidth			= 2
+ 		fatTblDimension			= 6
+-		fatTblThreshold			= (0,0.23925,0.31925,0.47925,1.99925,3.99925)
++		fatTblThreshold			= (0,0.0598125,0.0798125,0.1198125,0.4998125,0.9998125)
+ 		fatTblParallelLengthDimension	= 4
+-		fatTblParallelLength		= (0,1.59925,4.79925,7.19925)
+-		fatTblSpacing			= (0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,2,
+-						   0.16,0.16,0.16,4)
+-		minArea				= 30.08
++		fatTblParallelLength		= (0,0.3998125,1.1998125,1.7998125)
++		fatTblSpacing			= (0.01,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.5,
++						   0.04,0.04,0.04,4)
++		minArea				= 0.00752
+ 		maxNumMinEdge			= 1
+-		minEdgeLength			= 0.16
++		minEdgeLength			= 0.04
+ }
+ 
+ Layer		"V8" {
+@@ -883,9 +971,9 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "blank"
+ 		pitch				= 0
+-		defaultWidth			= 0.16
+-		minWidth			= 0.16
+-		minSpacing			= 0.228
++		defaultWidth			= 0.04
++		minWidth			= 0.04
++		minSpacing			= 0.057
+ 		minCutsTblSize			= 1
+ 		minCutsTbl			= (2,*,7.221,-1.000,-1.000000,-1.000)
+ }
+@@ -900,23 +988,23 @@
+ 		color				= "white"
+ 		lineStyle			= "solid"
+ 		pattern				= "slash"
+-		pitch				= 0.32
+-		defaultWidth			= 0.16
+-		minWidth			= 0.16
+-		minSpacing			= 0.16
++		pitch				= 0.08
++		defaultWidth			= 0.04
++		minWidth			= 0.04
++		minSpacing			= 0.04
+ 		fatTblDimension			= 6
+-		fatTblThreshold			= (0,0.23925,0.31925,0.47925,1.99925,3.99925)
++		fatTblThreshold			= (0,0.0598125,0.0798125,0.1198125,0.4998125,0.9998125)
+ 		fatTblParallelLengthDimension	= 4
+-		fatTblParallelLength		= (0,1.59925,4.79925,7.19925)
+-		fatTblSpacing			= (0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,0.16,
+-						   0.16,0.16,0.16,2,
+-						   0.16,0.16,0.16,4)
+-		minArea				= 30.08
++		fatTblParallelLength		= (0,0.3998125,1.1998125,1.7998125)
++		fatTblSpacing			= (0.01,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.04,
++						   0.04,0.04,0.04,0.5,
++						   0.04,0.04,0.04,4)
++		minArea				= 0.00752
+ 		maxNumMinEdge			= 1
+-		minEdgeLength			= 0.16
++		minEdgeLength			= 0.04
+ }
+ 
+ Layer		"V9" {
+@@ -930,9 +1018,9 @@
+ 		lineStyle			= "solid"
+ 		pattern				= "blank"
+ 		pitch				= 0
+-		defaultWidth			= 0.16
+-		minWidth			= 0.16
+-		minSpacing			= 0.228
++		defaultWidth			= 0.04
++		minWidth			= 0.04
++		minSpacing			= 0.057
+ 		minCutsTblSize			= 3
+ 		minCutsTbl			= (1,*,-1.000,0.161,-1.000000,-1.000,
+ 						   1,*,-1.000,1.441,-1.000000,-1.000,
+@@ -949,16 +1037,16 @@
+ 		color				= "white"
+ 		lineStyle			= "solid"
+ 		pattern				= "slash"
+-		pitch				= 0.32
+-		defaultWidth			= 0.16
+-		minWidth			= 0.16
+-		minSpacing			= 8
++		pitch				= 0.08
++		defaultWidth			= 0.04
++		minWidth			= 0.04
++		minSpacing			= 2
+ 		fatTblDimension			= 2
+-		fatTblThreshold			= (0,47.9993)
++		fatTblThreshold			= (0,11.999825)
+ 		fatTblParallelLengthDimension	= 2
+-		fatTblParallelLength		= (0,47.9993)
+-		fatTblSpacing			= (8,8,
+-						   8,12)
++		fatTblParallelLength		= (0,11.999825)
++		fatTblSpacing			= (2,2,
++						   2,3)
+ }
+ /*Layer		"BOUNDARY" {                      
+ 		layerNumber			= 18
+@@ -988,13 +1076,13 @@
+ 		lowerLayer			= "M9"
+ 		upperLayer			= "Pad"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.4
+-		cutHeight			= 0.4
++		cutWidth			= 0.1
++		cutHeight			= 0.1
+ 		upperLayerEncWidth		= 0
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.228
++		minCutSpacing			= 0.057
+ }
+ 
+ ContactCode	"VIA89" {
+@@ -1003,13 +1091,13 @@
+ 		lowerLayer			= "M8"
+ 		upperLayer			= "M9"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.16
+-		cutHeight			= 0.16
++		cutWidth			= 0.04
++		cutHeight			= 0.04
+ 		upperLayerEncWidth		= 0
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.228
++		minCutSpacing			= 0.057
+ }
+ 
+ ContactCode	"VIA78" {
+@@ -1018,13 +1106,13 @@
+ 		lowerLayer			= "M7"
+ 		upperLayer			= "M8"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.128
+-		cutHeight			= 0.128
+-		upperLayerEncWidth		= 0.044
++		cutWidth			= 0.032
++		cutHeight			= 0.032
++		upperLayerEncWidth		= 0.011
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+-		lowerLayerEncHeight		= 0.044
+-		minCutSpacing			= 0.184
++		lowerLayerEncHeight		= 0.011
++		minCutSpacing			= 0.046
+ }
+ 
+ ContactCode	"VIA67" {
+@@ -1033,11 +1121,11 @@
+ 		lowerLayer			= "M6"
+ 		upperLayer			= "M7"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.128
+-		cutHeight			= 0.128
++		cutWidth			= 0.032
++		cutHeight			= 0.032
+ 		upperLayerEncWidth		= 0
+-		upperLayerEncHeight		= 0.044
+-		lowerLayerEncWidth		= 0.044
++		upperLayerEncHeight		= 0.011
++		lowerLayerEncWidth		= 0.011
+ 		lowerLayerEncHeight		= 0
+ 		minCutSpacing			= 0
+ }
+@@ -1048,12 +1136,12 @@
+ 		lowerLayer			= "M5"
+ 		upperLayer			= "M6"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.096
+-		cutHeight			= 0.128
+-		upperLayerEncWidth		= 0.044
++		cutWidth			= 0.024
++		cutHeight			= 0.032
++		upperLayerEncWidth		= 0.011
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+-		lowerLayerEncHeight		= 0.044
++		lowerLayerEncHeight		= 0.011
+ 		minCutSpacing			= 0
+ }
+ 
+@@ -1063,11 +1151,11 @@
+ 		lowerLayer			= "M4"
+ 		upperLayer			= "M5"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.096
+-		cutHeight			= 0.096
++		cutWidth			= 0.024
++		cutHeight			= 0.024
+ 		upperLayerEncWidth		= 0
+-		upperLayerEncHeight		= 0.044
+-		lowerLayerEncWidth		= 0.044
++		upperLayerEncHeight		= 0.011
++		lowerLayerEncWidth		= 0.011
+ 		lowerLayerEncHeight		= 0
+ 		minCutSpacing			= 0
+ }
+@@ -1078,12 +1166,12 @@
+ 		lowerLayer			= "M3"
+ 		upperLayer			= "M4"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.072
+-		cutHeight			= 0.096
+-		upperLayerEncWidth		= 0.044
++		cutWidth			= 0.018
++		cutHeight			= 0.024
++		upperLayerEncWidth		= 0.011
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+-		lowerLayerEncHeight		= 0.02
++		lowerLayerEncHeight		= 0.005
+ 		minCutSpacing			= 0
+ }
+ 
+@@ -1093,13 +1181,13 @@
+ 		lowerLayer			= "M2"
+ 		upperLayer			= "M3"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.072
+-		cutHeight			= 0.072
++		cutWidth			= 0.018
++		cutHeight			= 0.018
+ 		upperLayerEncWidth		= 0
+-		upperLayerEncHeight		= 0.02
+-		lowerLayerEncWidth		= 0.02
++		upperLayerEncHeight		= 0.005
++		lowerLayerEncWidth		= 0.005
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.072
++		minCutSpacing			= 0.018
+ }
+ 
+ ContactCode	"VIA12" {
+@@ -1108,13 +1196,13 @@
+ 		lowerLayer			= "M1"
+ 		upperLayer			= "M2"
+ 		isDefaultContact		= 1
+-		cutWidth			= 0.072
+-		cutHeight			= 0.072
+-		upperLayerEncWidth		= 0.02
++		cutWidth			= 0.018
++		cutHeight			= 0.018
++		upperLayerEncWidth		= 0.005
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+-		lowerLayerEncHeight		= 0.008
+-		minCutSpacing			= 0.072
++		lowerLayerEncHeight		= 0.002
++		minCutSpacing			= 0.018
+ }
+ 
+ ContactCode	"Pad_M9" {
+@@ -1124,13 +1212,13 @@
+ 		upperLayer			= "Pad"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.128
+-		cutHeight			= 0.128
+-		upperLayerEncWidth		= 0.044
++		cutWidth			= 0.032
++		cutHeight			= 0.032
++		upperLayerEncWidth		= 0.011
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.184
++		minCutSpacing			= 0.046
+ }
+ 
+ ContactCode	"M9_M8" {
+@@ -1140,13 +1228,13 @@
+ 		upperLayer			= "M9"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.16
+-		cutHeight			= 0.16
++		cutWidth			= 0.04
++		cutHeight			= 0.04
+ 		upperLayerEncWidth		= 0
+-		upperLayerEncHeight		= 0.08
++		upperLayerEncHeight		= 0.02
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.228
++		minCutSpacing			= 0.057
+ }
+ 
+ ContactCode	"M8_M7" {
+@@ -1156,13 +1244,13 @@
+ 		upperLayer			= "M8"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.128
+-		cutHeight			= 0.128
+-		upperLayerEncWidth		= 0.044
++		cutWidth			= 0.032
++		cutHeight			= 0.032
++		upperLayerEncWidth		= 0.011
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.184
++		minCutSpacing			= 0.046
+ }
+ 
+ ContactCode	"M7_M6" {
+@@ -1172,13 +1260,13 @@
+ 		upperLayer			= "M7"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.128
+-		cutHeight			= 0.128
++		cutWidth			= 0.032
++		cutHeight			= 0.032
+ 		upperLayerEncWidth		= 0
+-		upperLayerEncHeight		= 0.044
+-		lowerLayerEncWidth		= 0.044
++		upperLayerEncHeight		= 0.011
++		lowerLayerEncWidth		= 0.011
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.184
++		minCutSpacing			= 0.046
+ }
+ 
+ ContactCode	"M7_M6_Enc" {
+@@ -1188,13 +1276,13 @@
+ 		upperLayer			= "M7"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.128
+-		cutHeight			= 0.128
+-		upperLayerEncWidth		= 0.044
++		cutWidth			= 0.032
++		cutHeight			= 0.032
++		upperLayerEncWidth		= 0.011
+ 		upperLayerEncHeight		= 0
+-		lowerLayerEncWidth		= 0.044
++		lowerLayerEncWidth		= 0.011
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.184
++		minCutSpacing			= 0.046
+ }
+ 
+ ContactCode	"M6_M5" {
+@@ -1204,13 +1292,13 @@
+ 		upperLayer			= "M6"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.096
+-		cutHeight			= 0.128
+-		upperLayerEncWidth		= 0.044
++		cutWidth			= 0.024
++		cutHeight			= 0.032
++		upperLayerEncWidth		= 0.011
+ 		upperLayerEncHeight		= 0
+-		lowerLayerEncWidth		= 0.044
++		lowerLayerEncWidth		= 0.011
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.136
++		minCutSpacing			= 0.034
+ }
+ 
+ ContactCode	"M6_M5_Enc" {
+@@ -1220,13 +1308,13 @@
+ 		upperLayer			= "M6"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.096
+-		cutHeight			= 0.128
++		cutWidth			= 0.024
++		cutHeight			= 0.032
+ 		upperLayerEncWidth		= 0
+-		upperLayerEncHeight		= 0.044
+-		lowerLayerEncWidth		= 0.044
++		upperLayerEncHeight		= 0.011
++		lowerLayerEncWidth		= 0.011
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.136
++		minCutSpacing			= 0.034
+ }
+ 
+ ContactCode	"M3_M2widePWR0p936" {
+@@ -1236,13 +1324,13 @@
+ 		upperLayer			= "M3"
+ 		contactSourceType		= 5
+ 		isFatContact			= 1
+-		cutWidth			= 0.936
+-		cutHeight			= 0.072
++		cutWidth			= 0.234
++		cutHeight			= 0.018
+ 		upperLayerEncWidth		= 0
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.072
++		minCutSpacing			= 0.018
+ }
+ 
+ ContactCode	"M4_M3widePWR0p864" {
+@@ -1252,13 +1340,13 @@
+ 		upperLayer			= "M4"
+ 		contactSourceType		= 5
+ 		isFatContact			= 1
+-		cutWidth			= 0.072
+-		cutHeight			= 0.864
++		cutWidth			= 0.018
++		cutHeight			= 0.216
+ 		upperLayerEncWidth		= 0
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.072
++		minCutSpacing			= 0.018
+ }
+ 
+ ContactCode	"M5_M4widePWR0p864" {
+@@ -1268,13 +1356,13 @@
+ 		upperLayer			= "M5"
+ 		contactSourceType		= 5
+ 		isFatContact			= 1
+-		cutWidth			= 0.864
+-		cutHeight			= 0.096
++		cutWidth			= 0.216
++		cutHeight			= 0.024
+ 		upperLayerEncWidth		= 0
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.288
++		minCutSpacing			= 0.072
+ }
+ 
+ ContactCode	"M6_M5widePWR1p152" {
+@@ -1284,13 +1372,13 @@
+ 		upperLayer			= "M6"
+ 		contactSourceType		= 5
+ 		isFatContact			= 1
+-		cutWidth			= 0.096
+-		cutHeight			= 1.152
++		cutWidth			= 0.024
++		cutHeight			= 0.288
+ 		upperLayerEncWidth		= 0
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.288
++		minCutSpacing			= 0.072
+ }
+ 
+ ContactCode	"M7_M6widePWR1p152" {
+@@ -1300,13 +1388,13 @@
+ 		upperLayer			= "M7"
+ 		contactSourceType		= 5
+ 		isFatContact			= 1
+-		cutWidth			= 1.152
+-		cutHeight			= 0.128
++		cutWidth			= 0.288
++		cutHeight			= 0.032
+ 		upperLayerEncWidth		= 0
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.256
++		minCutSpacing			= 0.064
+ }
+ 
+ ContactCode	"M2_M1" {
+@@ -1316,13 +1404,13 @@
+ 		upperLayer			= "M2"
+ 		isDefaultContact		= 1
+ 		contactSourceType		= 1
+-		cutWidth			= 0.072
+-		cutHeight			= 0.072
+-		upperLayerEncWidth		= 0.008
++		cutWidth			= 0.018
++		cutHeight			= 0.018
++		upperLayerEncWidth		= 0.002
+ 		upperLayerEncHeight		= 0
+ 		lowerLayerEncWidth		= 0
+ 		lowerLayerEncHeight		= 0
+-		minCutSpacing			= 0.072
++		minCutSpacing			= 0.018
+ }
+ DesignRule	{
+ 		layer1				= "V0"

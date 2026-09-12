@@ -1,0 +1,15 @@
+# Derived, tool-version-specific build products — regenerate with scripts/
+db_out/
+*.db
+*.ndm/
+CLIBs/
+alib-*/
+
+# Tool droppings
+*.log
+*.svf
+command.log
+*_command.log
+flex*.log
+crte_*.txt
+.volatile_master_config_info
